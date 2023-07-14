@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       colors: {
         'smokey-black': '#0F0F0F',
+      },
+      fontFamily: {
+        body: ['Poppins'],
       }
     },
   },
