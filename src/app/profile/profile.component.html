@@ -1,8 +1,15 @@
 <!-- Profile Component HTML -->
 <div class="bg-mirage-gray mt-14 p-10 rounded-3xl border-1 lx:flex lx:flex-col lx:items-center"> <!-- Profile Container-->
+  <div class="max-lx:flex max-lx:flex-row max-lx:justify-between max-lx:p-4">
   <div>
-    <h1 class="text-3xl font-semibold lx:text-center leading-10">Mark Genesis Topinio</h1>
+    <h1 class="font-semibold text-3xl lx:text-center lx:leading-10">Mark Genesis Topinio</h1>
   </div>
+  <!-- Hidden Show Contacts Button -->
+  <div class="lx:hidden border border-r-gray-500 border-t-gray-500 border-b-gray-container border-l-gray-container rounded-tr-3xl rounded-bl-3xl flex flex-row justify-end w-max p-4"> <!-- Show Other Content Button -->
+    <h2>Show Contacts</h2>
+  </div>
+  </div>
+
   <div class="bg-gray-container max-w-fit p-2 m-3.5 rounded-lg">
     <h4 class="text-xs text-center">Software Developer</h4>
   </div>
@@ -24,6 +31,7 @@
       </a>
     </div>
   </div>
+
   <div class="hidden lx:block mt-10"> <!-- Contacts and Address details -->
     <!-- For Email -->
     <div class="flex flex-row mt-3.5">
