@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
   currentTab: string = 'About';
-  activeTab = 'text-white bg-blue';
   navTabs: string[] = ['About','Resume', 'Projects', 'Contact'];
 
   isActive(tab: string): boolean {
