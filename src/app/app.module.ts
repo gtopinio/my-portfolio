@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContentLayoutComponent } from './content-layout/content-layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { AboutComponent } from './about/about.component';
+import { ResumeComponent } from './resume/resume.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     ContentLayoutComponent,
-    NavigationComponent
+    NavigationComponent,
+    AboutComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,
