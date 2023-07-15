@@ -14,6 +14,9 @@ module.exports = {
       },
       fontFamily: {
         body: ['Poppins'],
+      },
+      screens: {
+        'lx': '1250px',
       }
     },
   },
