@@ -1,6 +1,6 @@
 <!-- Profile Component HTML -->
 <div class="bg-mirage-gray mt-14 lx:p-10 rounded-3xl border-1 lx:flex lx:flex-col lx:items-center"> <!-- Profile Container-->
-  <div class="max-lx:flex max-lx:flex-row max-lx:justify-between"> <!-- Flexbox for the information details and Button -->
+  <div class="max-lx:flex max-lx:flex-row max-lx:justify-between relative"> <!-- Flexbox for the information details and Button -->
     <div class="max-lx:p-10"> <!-- Container for other elements other than the 'Show Contacts' Button -->
       <div>
         <h1 class="font-semibold text-3xl lx:text-center lx:leading-10">Mark Genesis Topinio</h1>
@@ -28,7 +28,9 @@
           </div>
         </div>
 
-        <div class="hidden lx:block mt-10"> <!-- Contacts and Address details -->
+        <div [ngClass]="{'hidden': isContactsHidden}" class="profile-details transition-all duration-1000 ease-in-out"> <!-- Contacts and Address details -->
+          <div class="md:w-165 lg:w-220 lx:hidden border border-gray-container transition-all duration-1000 ease-in-out">
+          </div>
           <!-- For Email -->
           <div class="flex flex-row mt-3.5">
             <div class="inner-card-container"> <!-- Side Icon -->
@@ -83,7 +85,7 @@
         </div>
     </div>
     <!-- Hidden Show Contacts Button -->
-    <div class="lx:hidden hover:text-cyan-100 cursor-pointer text-cyan-400 transition duration-500 ease-in-out h-1/3 border border-r-gray-500 border-t-gray-500 border-b-cyan-900 border-l-cyan-900 rounded-tr-3xl rounded-bl-3xl flex flex-row justify-end w-max p-4"> <!-- Show Other Content Button -->
+    <div (click)="toggleContacts()" class="lx:hidden hover:text-cyan-100 cursor-pointer text-cyan-500 transition duration-500 ease-in-out h-1/3 border border-r-gray-500 border-t-gray-500 border-b-cyan-900 border-l-cyan-900 rounded-tr-3xl rounded-bl-3xl flex flex-row justify-end w-max p-4"> <!-- Show Other Content Button -->
       <h2>Show Contacts</h2>
     </div>
   </div>

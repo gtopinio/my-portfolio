@@ -17,7 +17,11 @@ module.exports = {
       },
       screens: {
         'lx': '1250px',
-      }
+      },
+      width: {
+        '165': '165%',
+        '220': '220%',
+      },
     },
   },
   plugins: [],

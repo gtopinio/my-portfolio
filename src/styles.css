@@ -10,6 +10,10 @@
   border-color: #373739;
 }
 
+.profile-details {
+  @apply lx:block mt-10 transition duration-500 ease-in-out;;
+}
+
 .navtab {
   @apply mx-5 hover:text-gray-400 cursor-pointer transition duration-500 ease-in-out;
 }

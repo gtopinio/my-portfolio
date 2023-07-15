@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   ]
 })
 export class ProfileComponent {
+  isContactsHidden: boolean = true;
 
+  toggleContacts(): void {
+    this.isContactsHidden = !this.isContactsHidden;
+  }
 }
