@@ -17,3 +17,7 @@
 .active {
   @apply text-cyan-500;
 }
+
+.inner-card-container {
+  @apply mr-3 p-3.5 bg-card-container rounded-md shadow shadow-inner drop-shadow-md shadow-zinc-700;
+}
