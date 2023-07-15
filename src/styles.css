@@ -25,3 +25,25 @@
 .inner-card-container {
   @apply mr-3 p-3.5 bg-card-container rounded-md shadow shadow-inner drop-shadow-md shadow-zinc-700;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2b2b2d;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
