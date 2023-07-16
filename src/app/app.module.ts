@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContentLayoutComponent } from './content-layout/content-layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { routingComponents } from "./app-routing.module";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { routingComponents } from "./app-routing.module";
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]
