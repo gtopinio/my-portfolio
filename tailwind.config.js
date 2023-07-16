@@ -17,11 +17,15 @@ module.exports = {
       },
       screens: {
         'lx': '1250px',
+        'nav-limit': '880px',
       },
       width: {
         '165': '165%',
         '220': '220%',
       },
+      spacing: {
+        '100': '100%',
+      }
     },
   },
   plugins: [],
