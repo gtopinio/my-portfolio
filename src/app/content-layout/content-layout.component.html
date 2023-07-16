@@ -1,5 +1,6 @@
 <!-- Content-Layout Component HTML -->
-<main class="bg-mirage-gray rounded-3xl border-1 w-full grid grid-cols-3">
+<main class="bg-mirage-gray rounded-3xl border-1 w-full">
+  <div class="grid grid-cols-3"> <!-- Container for Navigation Header and Navigation Bar-->
     <!-- Navigation Header -->
     <div>
       <h2 class="text-4xl pl-10 pt-10 pr-10 pb-3 col-span-1">{{currentTab}}</h2>
@@ -10,7 +11,8 @@
     <app-navigation (navigationEvent)="currentTab=$event" class="col-span-2"></app-navigation>
     <div class="flex flex-col ml-12">
 
-      <!-- Router Views Go Here -->
-    <router-outlet></router-outlet>
   </div>
+  </div>
+  <!-- Router Views Go Here -->
+  <router-outlet></router-outlet>
 </main>

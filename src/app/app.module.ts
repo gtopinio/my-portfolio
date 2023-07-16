@@ -7,8 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContentLayoutComponent } from './content-layout/content-layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { routingComponents } from "./app-routing.module";
-import { ProjectsComponent } from './projects/projects.component';
-import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +15,6 @@ import { ContactComponent } from './contact/contact.component';
     ContentLayoutComponent,
     NavigationComponent,
     routingComponents,
-    ProjectsComponent,
-    ContactComponent,
   ],
   imports: [
     BrowserModule,
