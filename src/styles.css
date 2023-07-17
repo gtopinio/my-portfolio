@@ -53,3 +53,8 @@
   background: cyan;
   color: #2b2b2d;
 }
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}

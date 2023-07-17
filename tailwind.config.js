@@ -25,7 +25,10 @@ module.exports = {
       },
       spacing: {
         '100': '100%',
-      }
+      },
+      animation: {
+        fadeInOut: 'fadeInOut 1s ease-in-out', // Adjust the duration as needed
+      },
     },
   },
   plugins: [],
