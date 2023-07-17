@@ -23,7 +23,7 @@
 }
 
 .inner-card-container {
-  @apply mr-3 p-3.5 bg-card-container rounded-md shadow shadow-inner drop-shadow-md shadow-zinc-700;
+  @apply mr-3 p-3.5 bg-card-container rounded-md shadow shadow-inner shadow-zinc-700 hover:scale-110 transition duration-500 ease-in-out;
 }
 
 /* width */
