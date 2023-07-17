@@ -10,6 +10,7 @@ import { CourseService } from "../course.service";
 export class ResumeComponent implements OnInit {
 
   public courseList:any[] = [];
+  public lastCourse:any = {};
 
   constructor(private _courseService: CourseService) {
 
@@ -17,5 +18,11 @@ export class ResumeComponent implements OnInit {
 
   ngOnInit() {
     this.courseList = this._courseService.getCourseList();
+    this.lastCourse = this.courseList[this.courseList.length - 1];
+  }
+
+  // Function to know if the course is the last one
+  isLastCourse(course:any):boolean {
+    return !(course === this.lastCourse);
   }
 }
