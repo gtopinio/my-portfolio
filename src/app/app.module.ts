@@ -7,7 +7,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContentLayoutComponent } from './content-layout/content-layout.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { routingComponents } from "./app-routing.module";
-import {NgOptimizedImage} from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
+import { CourseService } from "./course.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import {NgOptimizedImage} from "@angular/common";
     AppRoutingModule,
     NgOptimizedImage
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

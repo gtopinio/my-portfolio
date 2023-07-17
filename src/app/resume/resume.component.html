@@ -1,24 +1,49 @@
-<div class="animate-fadeInOut">
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-  <div> Resume Content </div>
-</div>
+<div class="animate-fadeInOut"> <!-- Resume Container -->
+
+  <div class="flex flex-row ml-10 mt-3.5"> <!-- Container for Icon + Header -->
+    <div class="inner-card-container w-max"> <!-- Side Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    </div> <!-- End of Side Icon -->
+    <div> <!-- Side Header -->
+      <h2 class="text-xl font-semibold text-cyan-500 mt-3.5">Education</h2>
+    </div> <!-- End of Side Header -->
+  </div> <!-- End of Container for Icon + Header -->
+
+  <div class="flex flex-row ml-14 mt-6"> <!-- Container for Education Description -->
+    <svg class="w-6 fill-cyan-500 mb-24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Circle"><path d="M16 4C9.372 4 4 9.372 4 16s5.372 12 12 12 12-5.372 12-12S22.628 4 16 4zm0 22c-5.514 0-10-4.486-10-10S10.486 6 16 6s10 4.486 10 10-4.486 10-10 10zm-6-10a6 6 1080 1 0 12 0 6 6 1080 1 0-12 0z"></path></svg>
+    <div class="ml-10">
+      <h2 class="text-2xl font-semibold"> Bachelor of Science in Computer Science </h2>
+      <h3 class="mt-2.5"> University of the Philippines Los Baños </h3>
+      <h3 class="mt-1 text-cyan-500"> August 2019 - Present </h3>
+      <li class="ml-2.5 mt-1.5 text-sm">University Scholar</li>
+    </div>
+  </div>
+
+  <div class="flex flex-row ml-10 mt-3.5"> <!-- Container for Icon + Header -->
+    <div class="inner-card-container w-max"> <!-- Side Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      </svg>
+    </div> <!-- End of Side Icon -->
+    <div> <!-- Side Header -->
+      <h2 class="text-xl font-semibold text-cyan-500 mt-3.5">Courses</h2>
+    </div> <!-- End of Side Header -->
+  </div> <!-- End of Container for Icon + Header -->
+
+  <ng-container *ngFor="let course of courseList">
+    <div class="flex flex-row ml-14 mt-6"> <!-- Container for Education Description -->
+      <svg class="w-11 fill-cyan-500 mb-72" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="Circle"><path d="M16 4C9.372 4 4 9.372 4 16s5.372 12 12 12 12-5.372 12-12S22.628 4 16 4zm0 22c-5.514 0-10-4.486-10-10S10.486 6 16 6s10 4.486 10 10-4.486 10-10 10zm-6-10a6 6 1080 1 0 12 0 6 6 1080 1 0-12 0z"></path></svg>
+      <div class="ml-10">
+        <h2 class="text-2xl font-semibold"> {{course.id + ": " + course.name}}</h2>
+        <h3 class="mt-2.5">{{course.school}}</h3>
+        <h3 class="mt-1 text-cyan-500">{{course.year}}</h3>
+        <ng-container *ngFor="let activity of course.activities">
+          <li class="ml-2.5 mt-1.5 text-sm text-start mr-20">{{activity}}</li>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+</div> <!-- End of Resume Container -->

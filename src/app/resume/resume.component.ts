@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CourseService } from "../course.service";
 
 @Component({
   selector: 'app-resume',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class ResumeComponent {
+export class ResumeComponent implements OnInit {
 
+  public courseList:any[] = [];
+
+  constructor(private _courseService: CourseService) {
+
+  }
+
+  ngOnInit() {
+    this.courseList = this._courseService.getCourseList();
+  }
 }
