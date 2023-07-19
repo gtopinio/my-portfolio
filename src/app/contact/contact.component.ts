@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from "../navigation.service";
 
 @Component({
   selector: 'app-contact',
@@ -7,5 +8,11 @@ import { Component } from '@angular/core';
   ]
 })
 export class ContactComponent {
+  constructor(private _navigationService: NavigationService) {
 
+  }
+
+  changeToDefaultTab(){
+    this._navigationService.setCurrentTab('About');
+  }
 }

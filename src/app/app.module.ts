@@ -9,6 +9,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { routingComponents } from "./app-routing.module";
 import { NgOptimizedImage } from "@angular/common";
 import { CourseService } from "./course.service";
+import { NavigationService } from "./navigation.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,10 @@ import { CourseService } from "./course.service";
     AppRoutingModule,
     NgOptimizedImage
   ],
-  providers: [CourseService],
+  providers: [
+    CourseService,
+    NavigationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
