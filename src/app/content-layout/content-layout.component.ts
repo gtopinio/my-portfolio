@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   ]
 })
 export class ContentLayoutComponent {
-  public currentTab: string = 'About Me';
+  
 }
