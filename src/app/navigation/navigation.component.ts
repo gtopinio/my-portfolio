@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -16,7 +16,6 @@ currentTab: string = 'About';
     {id: 'projects', name: 'Projects'},
     {id: 'contact', name: 'Contact'},
   ];
-@Output() public navigationEvent = new EventEmitter();
 
   isActive(tab: string): boolean {
     return this.currentTab === tab;
@@ -24,11 +23,5 @@ currentTab: string = 'About';
 
   changeTab(tab: string): void {
     this.currentTab = tab;
-
-    if(tab == 'About') {
-      this.navigationEvent.emit(this.currentTab + ' Me');
-    } else {
-      this.navigationEvent.emit(this.currentTab);
-    }
   }
 }
