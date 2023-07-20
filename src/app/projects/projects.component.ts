@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { NavigationService } from "../navigation.service";
 
 @Component({
@@ -7,17 +7,26 @@ import { NavigationService } from "../navigation.service";
   styles: [
   ]
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit{
 
-  projectTabs: string[];
-  showDropdown: boolean = false;
+  projectTabs: {id: string, name: string}[];
+  selectedTab: any;
+  innerWidth: any;
 
   constructor(private _navigationService: NavigationService) {
     this.projectTabs = this._navigationService.getProjectTabs();
   }
 
-  changeToDefaultTab(){
-    this._navigationService.setCurrentTab('About');
+  ngOnInit() {
+    this.innerWidth = window.innerWidth;
+  }
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.innerWidth = window.innerWidth;
+  }
+
+  showDropdown(){
+    return (this.innerWidth >= 1110);
   }
 
 }

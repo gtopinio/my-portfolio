@@ -5,21 +5,19 @@ import { BehaviorSubject } from "rxjs";
   providedIn: 'root'
 })
 export class NavigationService {
-  private projectTabs =
-    [
-      "All",
-      "Web/Mobile Development",
-      "Socket Programming",
-      "Artificial Intelligence",
-      "Data Science",
-      "Others"
-    ];
+  private projectTabs: {id: string, name: string}[] = [
+    {id: 'all', name: 'All'},
+    {id: 'wm_dev', name: 'Web/Mobile Development'},
+    {id: 'socket', name: 'Socket Programming'},
+    {id: 'ai', name: 'Artificial Intelligence'},
+    {id: 'data_sc', name: 'Data Science'},
+    ]
 
   private currentTabSource = new BehaviorSubject<string>('About')
   currentTab$ = this.currentTabSource.asObservable();
   constructor() { }
 
-  getProjectTabs(): string[] {
+  getProjectTabs(): {id: string, name: string}[] {
     return this.projectTabs;
   }
 
