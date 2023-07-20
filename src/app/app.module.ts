@@ -10,6 +10,7 @@ import { routingComponents } from "./app-routing.module";
 import { NgOptimizedImage } from "@angular/common";
 import { CourseService } from "./course.service";
 import { NavigationService } from "./navigation.service";
+import {DropdownModule} from "primeng/dropdown";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NavigationService } from "./navigation.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    DropdownModule
   ],
   providers: [
     CourseService,

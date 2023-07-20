@@ -5,12 +5,22 @@ import { BehaviorSubject } from "rxjs";
   providedIn: 'root'
 })
 export class NavigationService {
+  private projectTabs =
+    [
+      "All",
+      "Web/Mobile Development",
+      "Socket Programming",
+      "Artificial Intelligence",
+      "Data Science",
+      "Others"
+    ];
+
   private currentTabSource = new BehaviorSubject<string>('About')
   currentTab$ = this.currentTabSource.asObservable();
   constructor() { }
 
-  getCurrentTab(): BehaviorSubject<string> {
-    return this.currentTabSource;
+  getProjectTabs(): string[] {
+    return this.projectTabs;
   }
 
   setCurrentTab(tab: string): void {

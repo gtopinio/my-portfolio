@@ -9,8 +9,11 @@ import { NavigationService } from "../navigation.service";
 })
 export class ProjectsComponent {
 
-  constructor(private _navigationService: NavigationService) {
+  projectTabs: string[];
+  showDropdown: boolean = false;
 
+  constructor(private _navigationService: NavigationService) {
+    this.projectTabs = this._navigationService.getProjectTabs();
   }
 
   changeToDefaultTab(){
