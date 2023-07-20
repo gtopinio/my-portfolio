@@ -41,6 +41,10 @@
   font-weight: bold;
 }
 
+.project-tab-active {
+  @apply text-cyan-500;
+}
+
 .project-card {
   @apply w-64 h-120 overflow-hidden rounded-2xl mt-5 drop-shadow-2xl;
 }
