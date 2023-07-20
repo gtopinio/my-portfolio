@@ -14,6 +14,7 @@ import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from "primeng/dropdown";
 import { AllprojectsComponent } from './allprojects/allprojects.component';
+import {CardModule} from "primeng/card";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AllprojectsComponent } from './allprojects/allprojects.component';
     DropdownModule,
     FormsModule,
     BrowserAnimationsModule,
+    CardModule,
   ],
   providers: [
     CourseService,

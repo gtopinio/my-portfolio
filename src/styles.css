@@ -40,6 +40,22 @@
   font-family: Poppins;
   font-weight: bold;
 }
+
+.project-card {
+  @apply w-64 h-120 overflow-hidden rounded-2xl mt-5 drop-shadow-2xl;
+}
+
+.project-card .p-card-body {
+  background: #202022;
+}
+
+.project-card .p-card-title {
+  color: #06b6d4;
+  font-family: Poppins;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
   /* width */
 ::-webkit-scrollbar {
   width: 10px;
