@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {ProjectService} from "../project.service";
 
 @Component({
   selector: 'app-allprojects',
@@ -6,6 +7,12 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class AllprojectsComponent {
+export class AllprojectsComponent implements OnInit{
+  projects: {id: number, header:string, subheader:string, description:string, image:string, link:string}[];
+  constructor(private _projectService: ProjectService) {
+    this.projects = this._projectService.getProjects();
+  }
 
+  ngOnInit() {
+  }
 }
