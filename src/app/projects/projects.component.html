@@ -22,7 +22,7 @@
   <!-- Dropdown List -->
   <ng-template #dropDown>
     <div class="flex flex-row justify-center mt-4">
-    <p-dropdown [options]="projectTabs" [(ngModel)]="selectedTab" optionLabel="name" styleClass="projects-drop-down"></p-dropdown>
+    <p-dropdown [options]="projectTabs" [(ngModel)]="selectedTab" optionLabel="name" styleClass="projects-drop-down" (onChange)="onDropDownChange()"></p-dropdown>
     </div>
   </ng-template>
 

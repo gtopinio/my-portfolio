@@ -1,5 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import { NavigationService } from "../navigation.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-projects',
@@ -13,7 +14,7 @@ export class ProjectsComponent implements OnInit{
   selectedTab: any;
   innerWidth: any;
 
-  constructor(private _navigationService: NavigationService) {
+  constructor(private _router: Router, private _navigationService: NavigationService) {
     this.projectTabs = this._navigationService.getProjectTabs();
   }
 
@@ -27,6 +28,10 @@ export class ProjectsComponent implements OnInit{
 
   showDropdown(){
     return (this.innerWidth >= 1110);
+  }
+
+  onDropDownChange(){
+    this._router.navigate(['/projects', this.selectedTab.id])
   }
 
 }
