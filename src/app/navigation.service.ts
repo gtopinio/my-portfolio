@@ -7,10 +7,10 @@ import { BehaviorSubject } from "rxjs";
 export class NavigationService {
   private projectTabs: {id: string, name: string}[] = [
     {id: 'all', name: 'All'},
-    {id: 'wm_dev', name: 'Web/Mobile Development'},
+    {id: 'web-mobile-dev', name: 'Web/Mobile Development'},
     {id: 'socket', name: 'Socket Programming'},
     {id: 'ai', name: 'Artificial Intelligence'},
-    {id: 'data_sc', name: 'Data Science'},
+    {id: 'data-science', name: 'Data Science'},
     ]
 
   private currentTabSource = new BehaviorSubject<string>('About')

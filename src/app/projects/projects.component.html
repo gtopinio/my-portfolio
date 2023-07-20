@@ -12,7 +12,7 @@
       <ul class="flex flex-row lx:justify-start">
         <div *ngFor="let tab of projectTabs">
           <li>
-            <a class="text-2xs p-3.5">{{tab.name}}</a>
+            <a [routerLink]="['/'+tab.id]" class="text-2xs p-3.5">{{tab.name}}</a>
           </li>
         </div>
       </ul>
@@ -26,5 +26,5 @@
     </div>
   </ng-template>
 
-
+  <router-outlet></router-outlet>
 </div>
