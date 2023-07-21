@@ -9,18 +9,25 @@ import {ActivatedRoute} from "@angular/router";
   ]
 })
 export class ProjectDetailsComponent implements OnInit{
-  projects: {id: number, header:string, subheader:string, description:string, image:string, link:string}[];
+  projects: {id: number, header:string, subheader:string, description:string, image:string, link:string, type:string}[];
+  filteredProjects: any;
   activatedRoute:any = '';
 
   constructor(private _projectService: ProjectService, private _route:ActivatedRoute) {
     this.projects = this._projectService.getProjects();
     this._route.params.subscribe(params => {
       this.activatedRoute = params['id'];
+      this.filterProjects();
     });
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute);
+
+  }
+
+  filterProjects(){
+    this.filteredProjects = this.projects.filter(project => project.type === this.activatedRoute);
+    console.log(this.filteredProjects);
   }
 
 }

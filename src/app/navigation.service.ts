@@ -11,6 +11,7 @@ export class NavigationService {
     {id: 'socket', name: 'Socket Programming'},
     {id: 'ai', name: 'Artificial Intelligence'},
     {id: 'data-science', name: 'Data Science'},
+    {id: 'others', name: 'Others'},
     ]
 
   private currentTabSource = new BehaviorSubject<string>('About')
