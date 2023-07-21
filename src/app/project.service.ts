@@ -99,7 +99,7 @@ export class ProjectService {
       },
       {
         id: 10,
-        header: 'LAPER',
+        header: 'LAPERA',
         subheader: 'Python Console Shopping App',
         description: 'A Python console shopping app, similar to LAZADA. It caters to both Sellers and Buyers, and there can be many sellers and buyers registered in the app.',
         image: 'assets/images/default-project-image.png',
