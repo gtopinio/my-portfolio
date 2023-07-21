@@ -43,6 +43,15 @@ export class ProjectService {
         link: 'https://github.com/gtopinio/partition-problem-solver',
         type: 'others',
       },
+      {
+        id: 4,
+        header: 'ProgressPal',
+        subheader: ' Task Management Solution',
+        description: 'Study on the impact of ProgressPal app in improving productivity and organization among college students. Explored features like Eisenhower Matrix, Kanban Board, "Wheel of Tasks," and motivation to prioritize tasks and reduce procrastination.',
+        image: 'assets/images/default-project-image.png',
+        link: 'https://youtu.be/bVx4n5lUdMw',
+        type: 'others',
+      },
     ]
 
   constructor() { }

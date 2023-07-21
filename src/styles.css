@@ -46,7 +46,7 @@
 }
 
 .project-card {
-  @apply w-64 h-120 overflow-hidden rounded-2xl mt-5 drop-shadow-2xl;
+  @apply w-64 h-max overflow-hidden rounded-2xl mt-5 drop-shadow-2xl animate-expand hover:scale-105 transition duration-700 ease-in-out;
 }
 
 .project-card .p-card-body {
@@ -91,4 +91,13 @@
 @keyframes fadeInOut {
   0% { opacity: 0; }
   50% { opacity: 1; }
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

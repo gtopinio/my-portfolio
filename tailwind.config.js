@@ -36,6 +36,7 @@ module.exports = {
       },
       animation: {
         fadeInOut: 'fadeInOut 1s ease-in-out', // Adjust the duration as needed
+        expand: 'expand 0.5s ease-out',
       },
       fontSize: {
         '2xs': '.85rem',
