@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from "primeng/dropdown";
 import { ProjectDetailsComponent } from './project-details/project-details.component';
 import {CardModule} from "primeng/card";
+import {ScrollTopModule} from "primeng/scrolltop";
 
 
 @NgModule({
@@ -26,15 +27,16 @@ import {CardModule} from "primeng/card";
     routingComponents,
     ProjectDetailsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgOptimizedImage,
-    DropdownModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    CardModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgOptimizedImage,
+        DropdownModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        CardModule,
+        ScrollTopModule,
+    ],
   providers: [
     CourseService,
     NavigationService
