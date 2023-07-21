@@ -5,7 +5,7 @@ import {ResumeComponent} from "./resume/resume.component";
 import {ProjectsComponent} from "./projects/projects.component";
 import {ContactComponent} from "./contact/contact.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {AllprojectsComponent as AllProjectsComponent} from "./allprojects/allprojects.component";
+import {ProjectDetailsComponent} from "./project-details/project-details.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/about', pathMatch: 'full' },
@@ -15,7 +15,7 @@ const routes: Routes = [
     children:
       [
         { path: '', redirectTo: 'all', pathMatch: 'full' },
-        { path: 'all', component: AllProjectsComponent },
+        { path: 'all', component: ProjectDetailsComponent },
       ]
   },
   { path: 'contact', component: ContactComponent },
@@ -33,5 +33,5 @@ export const routingComponents = [
   ProjectsComponent,
   ContactComponent,
   PageNotFoundComponent,
-  AllProjectsComponent,
+  ProjectDetailsComponent,
 ];

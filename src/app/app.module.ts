@@ -13,7 +13,7 @@ import { NavigationService } from "./navigation.service";
 import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from "primeng/dropdown";
-import { AllprojectsComponent } from './allprojects/allprojects.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 import {CardModule} from "primeng/card";
 
 
@@ -24,7 +24,7 @@ import {CardModule} from "primeng/card";
     ContentLayoutComponent,
     NavigationComponent,
     routingComponents,
-    AllprojectsComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,
