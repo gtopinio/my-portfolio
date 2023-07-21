@@ -31,7 +31,7 @@ export class ProjectService {
         subheader: 'Networked Java Game',
         description: 'A 2D multiplayer platformer game that allows players to choose a character with unique abilities and race against each other to reach the end of the level.',
         image: 'assets/images/default-project-image.png',
-        link: 'https://github.com/gtopinio/elbnb-backend-128',
+        link: 'https://github.com/PERSEUS-1337/cmsc137-elemental-odyssey',
         type: 'socket',
       },
       {
@@ -40,7 +40,7 @@ export class ProjectService {
         subheader: ' Iterative Backtracking Algorithm',
         description: 'A C program that uses a modified backtracking method to efficiently solve the Partition problem.',
         image: 'assets/images/default-project-image.png',
-        link: 'https://github.com/gtopinio/elbnb-backend-128',
+        link: 'https://github.com/gtopinio/partition-problem-solver',
         type: 'others',
       },
     ]
