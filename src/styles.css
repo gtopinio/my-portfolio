@@ -46,7 +46,7 @@
 }
 
 .project-card {
-  @apply w-64 h-max overflow-hidden rounded-2xl mt-5 drop-shadow-2xl animate-expand hover:scale-105 transition duration-700 ease-in-out;
+  @apply w-118 h-max nav-limit:w-64 nav-limit:h-max overflow-hidden rounded-2xl mt-5 drop-shadow-2xl animate-expand hover:scale-105 transition duration-700 ease-in-out;
 }
 
 .project-card .p-card-body {
