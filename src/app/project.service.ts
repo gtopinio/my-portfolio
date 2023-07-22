@@ -99,13 +99,22 @@ export class ProjectService {
       },
       {
         id: 10,
+        header: 'Super Dead Gunner',
+        subheader: 'Java Mini-Shooting Game',
+        description: 'A Java mini-shooting game that allows players to shoot aliens using a Gunner character. It is integrated with a scoring system and a boss level.',
+        image: 'assets/images/default-project-image.png',
+        link: 'https://github.com/gtopinio/mini-shooting-game',
+        type: 'others',
+      },
+      {
+        id: 11,
         header: 'LAPERA',
         subheader: 'Python Console Shopping App',
         description: 'A Python console shopping app, similar to LAZADA. It caters to both Sellers and Buyers, and there can be many sellers and buyers registered in the app.',
         image: 'assets/images/default-project-image.png',
         link: 'https://github.com/gtopinio/lapera-project-py',
         type: 'others',
-      }
+      },
     ]
 
   constructor() { }
