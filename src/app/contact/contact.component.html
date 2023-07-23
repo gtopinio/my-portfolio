@@ -14,16 +14,20 @@
     <form [formGroup]="contactForm" class="p-5">
 
       <div class="flex flex-col">
-        <div class="ml-5 flex flex-row justify-between"> <!-- Name and Email Input Container -->
-          <span class="p-float-label">
-            <input type="text" id="float-input-name" pInputText formControlName="name" class="contact-form-input mr-10"/>
-            <label for="float-input-name" class="area-float">Full Name</label>
-          </span>
+        <div class="ml-5 nav-limit:flex nav-limit:flex-row nav-limit:justify-between"> <!-- Name and Email Input Container -->
+          <div>
+            <span class="p-float-label">
+              <input type="text" id="float-input-name" pInputText formControlName="name" class="contact-form-input mr-10"/>
+              <label for="float-input-name" class="area-float">Full Name</label>
+            </span>
+          </div>
 
-          <span class="p-float-label">
-            <input type="text" id="float-input-email" pInputText formControlName="email" class="contact-form-input mr-10"/>
-            <label for="float-input-email" class="area-float">Email Address</label>
-          </span>
+          <div class="max-nav-limit:mt-7">
+            <span class="p-float-label">
+              <input type="text" id="float-input-email" pInputText formControlName="email" class="contact-form-input mr-10"/>
+              <label for="float-input-email" class="area-float">Email Address</label>
+            </span>
+          </div>
         </div> <!-- End of Name and Email Input Container -->
 
         <div class="mt-8 ml-5">
