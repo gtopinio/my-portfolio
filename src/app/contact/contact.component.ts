@@ -10,6 +10,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class ContactComponent implements OnInit {
 
   contactForm:FormGroup;
+  loading = false;
 
   constructor(private formBuilder:FormBuilder){
     this.contactForm = this.formBuilder.group(
@@ -25,5 +26,13 @@ export class ContactComponent implements OnInit {
 
   }
 
-  protected readonly name = name;
+  onSubmit(): void {
+    if(this.contactForm.valid) {
+      console.log(this.contactForm.value);
+    }
+    else {
+      console.log("Form is invalid");
+    }
+  }
+
 }

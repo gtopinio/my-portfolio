@@ -40,7 +40,7 @@
     </form>
 
     <div class="flex flex-row justify-end">
-      <p-button class="send-message-btn mr-12" label="Send Message" icon="pi pi-send"></p-button>
+      <p-button class="send-message-btn mr-12" label="Send Message" icon="pi pi-send" [loading]="loading" (click)="onSubmit()"></p-button>
     </div>
   </div> <!-- End of Contact Form -->
 </div>

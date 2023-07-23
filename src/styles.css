@@ -94,7 +94,8 @@
 }
 
 .send-message-btn .p-button-label{
-  font-family: Poppins
+  font-family: Poppins;
+  margin-left: 7px;
 }
 
   /* width */
