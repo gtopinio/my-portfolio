@@ -32,7 +32,6 @@ type Email {
 const SAVE_EMAIL = gql`
   mutation saveEmail($email: EmailInput!) {
     saveEmail(email: $email) {
-      id
       senderEmail
       senderName
       message

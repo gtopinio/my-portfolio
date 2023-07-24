@@ -98,6 +98,35 @@
   margin-left: 7px;
 }
 
+.message-confirm-dialog .p-dialog-header {
+  font-family: Poppins;
+  background-color: #373739;
+  color: white;
+}
+
+.message-confirm-dialog .p-dialog-content {
+  font-family: Poppins;
+  background-color: #373739;
+  color: white;
+}
+
+.message-confirm-dialog .pi-exclamation-triangle {
+  margin-top:10px;
+}
+
+.message-confirm-dialog .p-confirm-dialog-message{
+  margin-top:10px;
+}
+
+.message-confirm-dialog .p-dialog-footer {
+  font-family: Poppins;
+  background-color: #373739;
+  color: white;
+}
+
+.message-confirm-dialog .p-dialog-footer button {
+  @apply mt-4 ml-5 rounded-2xl drop-shadow-xl hover:bg-cyan-500 hover:text-black hover:scale-110 transition duration-500 ease-in-out;
+}
   /* width */
 ::-webkit-scrollbar {
   width: 10px;

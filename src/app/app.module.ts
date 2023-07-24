@@ -7,10 +7,8 @@ import { ContentLayoutComponent } from './content-layout/content-layout.componen
 import { NavigationComponent } from './navigation/navigation.component';
 import { routingComponents } from "./app-routing.module";
 
-import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
+import { ApolloModule } from 'apollo-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { InMemoryCache } from "apollo-cache-inmemory";
 
 import { NgOptimizedImage } from "@angular/common";
 import { CourseService } from "./course.service";
@@ -25,7 +23,10 @@ import { InputTextModule } from "primeng/inputtext";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { ButtonModule} from "primeng/button";
 import { GraphQLModule } from './graphql.module';
-
+import { ToastModule } from "primeng/toast";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { ConfirmationService } from "primeng/api";
+import { MessageService } from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -52,10 +53,14 @@ import { GraphQLModule } from './graphql.module';
     ApolloModule,
     HttpClientModule,
     GraphQLModule,
+    ToastModule,
+    ConfirmDialogModule,
   ],
   providers: [
     CourseService,
     NavigationService,
+    ConfirmationService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })
