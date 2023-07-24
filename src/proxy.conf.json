@@ -1,0 +1,7 @@
+{
+  "/graphql": {
+    "target": "https://myportfolio-spring-boot.onrender.com/graphql",
+    "secure": true,
+    "changeOrigin": true
+  }
+}
