@@ -41,7 +41,7 @@ module.exports = {
         expand: 'expand 0.5s ease-out',
       },
       fontSize: {
-        '2xs': '.85rem',
+        '2xs': '.90rem',
       }
     },
   },
