@@ -38,17 +38,25 @@ export class ContactComponent implements OnInit {
   }
 
   async onConfirm(){
-    this.confirmationService.confirm({
-      header: 'Message Confirmation',
-      icon: 'pi pi-exclamation-triangle',
-      message: 'Are you sure that you want to send this message?',
-      accept: async () => {
-        await this.acceptSendMessage()
-      },
-      reject: () => {
-        this.rejectSendMessage()
-      }
-    });
+    if(!this.contactForm.valid){
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warning: Form is invalid',
+        detail: 'Please fill out the form'
+      });
+    } else {
+      this.confirmationService.confirm({
+        header: 'Message Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        message: 'Are you sure that you want to send this message?',
+        accept: async () => {
+          await this.acceptSendMessage()
+        },
+        reject: () => {
+          this.rejectSendMessage()
+        }
+      });
+    }
   }
 
 async acceptSendMessage() {
