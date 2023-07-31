@@ -9,7 +9,7 @@ import {ActivatedRoute} from "@angular/router";
   ]
 })
 export class ProjectDetailsComponent implements OnInit{
-  projects: {id: number, header:string, subheader:string, description:string, image:string, link:string, type:string}[];
+  projects: {header:string, subheader:string, description:string, image:string, link:string, type:string}[];
   filteredProjects: any;
   activatedRoute:any = '';
 
