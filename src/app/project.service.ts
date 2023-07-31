@@ -16,6 +16,22 @@ export class ProjectService {
     }[] =
     [
       {
+        header: 'Code Vault',
+        subheader: 'Encrypted Password Generator and Manager',
+        description: 'A Next.js web application that allows users to generate and manage their passwords. It also encrypts the passwords using crypto and stores them in a MongoDB database.',
+        image: 'assets/images/default-project-image.png',
+        link: 'https://code-vault-gtopinio.vercel.app/',
+        type: 'web-mobile-dev',
+      },
+      {
+        header: 'My Portfolio',
+        subheader: 'Personal Website',
+        description: 'An Angular web application that showcases my personal information, skills, and projects. It also handles the contact form for users to send messages to my email using Spring Boot.',
+        image: 'assets/images/default-project-image.png',
+        link: 'https://mark-genesis-topinio.vercel.app/',
+        type: 'web-mobile-dev',
+      },
+      {
       header: 'ELBNB',
       subheader: 'Student Accommodation and Lodging System',
       description: 'A web application that allows students to find accommodation and lodging within or outside the campus of University of the Philippines Los Baños.',
