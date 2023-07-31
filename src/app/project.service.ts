@@ -88,11 +88,11 @@ export class ProjectService {
         type: 'ai',
       },
       {
-        header: 'Tic-Tac-Toe Game',
+        header: 'Tic-Tac-Toe using MinMax Algorithm',
         subheader: 'MinMax Algorithm',
         description: 'A Java program that uses MinMax Algorithm to solve the Tic-Tac-Toe Game.',
         image: 'assets/images/default-project-image.png',
-        link: 'https://github.com/gtopinio/Tic-Tac-Toe-Game',
+        link: 'https://github.com/gtopinio/Tic-Tac-Toe_MinMax',
         type: 'ai',
       },
       {
