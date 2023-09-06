@@ -6,17 +6,23 @@ import { gql } from 'apollo-angular';
 
   type Query {
     emails: [Email],
-    emailById(id: ID!): Email
+    emailById(id: ID!): Email,
+    clicks: [Click],
 }
 
 type Mutation {
-    saveEmail(email: EmailInput): Email
+    saveEmail(email: EmailInput): Email,
+    saveClick(click: ClickInput): Click
 }
 
 input EmailInput {
     senderEmail: String!
     senderName: String!
     message: String!
+}
+
+input ClickInput {
+    linkName: String!
 }
 
 type Email {
@@ -36,6 +42,14 @@ const SAVE_EMAIL = gql`
       senderName
       message
       date
+    }
+  }
+`;
+
+const SAVE_CLICK = gql`
+  mutation saveClick($click: ClickInput!) {
+    saveClick(click: $click) {
+      linkName
     }
   }
 `;
@@ -64,4 +78,4 @@ const GET_EMAIL_BY_ID = gql`
   }
 `;
 
-export { SAVE_EMAIL, GET_EMAILS, GET_EMAIL_BY_ID }
+export { SAVE_EMAIL, GET_EMAILS, GET_EMAIL_BY_ID, SAVE_CLICK }

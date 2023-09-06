@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { NavigationService } from "../navigation.service";
+import {Apollo} from "apollo-angular";
+import { SAVE_CLICK } from "../graphql.operations";
 
 @Component({
   selector: 'app-navigation',
@@ -18,7 +20,9 @@ currentTab: string = '';
     {id: 'contact', name: 'Contact'},
   ];
 
-  constructor(private _navigationService: NavigationService) {
+  constructor(private _navigationService: NavigationService,
+              private apollo: Apollo,
+  ) {
 
   }
 
@@ -34,7 +38,25 @@ currentTab: string = '';
     return this.currentTab === tab;
   }
 
-  changeTab(tab: string): void {
+  async changeTab(tab: string): Promise<void> {
     this.currentTab = tab;
+    await this.onClickLink(tab);
+
+  }
+
+  async onClickLink(linkName: string): Promise<void> {
+    // Create new ClickInput object
+    const clickInput = {
+      linkName: linkName
+    };
+
+    // Save click to database
+    await this.apollo.mutate({
+      mutation: SAVE_CLICK,
+      variables: {
+        click: clickInput,
+      },
+    }).toPromise();
+
   }
 }

@@ -33,4 +33,8 @@ type EmailInput = {
   message: String,
 }
 
+type ClickInput = {
+  linkName: String
+}
+
 export { EmailInput }
