@@ -37,4 +37,4 @@ type ClickInput = {
   linkName: String
 }
 
-export { EmailInput }
+export { EmailInput, ClickInput }

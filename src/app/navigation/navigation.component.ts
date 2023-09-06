@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { NavigationService } from "../navigation.service";
 import {Apollo} from "apollo-angular";
 import { SAVE_CLICK } from "../graphql.operations";
+import { ClickInput } from "../graphql.types";
+import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: 'app-navigation',
@@ -45,18 +47,33 @@ currentTab: string = '';
   }
 
   async onClickLink(linkName: string): Promise<void> {
-    // Create new ClickInput object
-    const clickInput = {
-      linkName: linkName
-    };
+    try {
+      // Check if linkName is null
+      if (linkName === null) {
+        // Handle null value appropriately
+        // For example, provide a default value or display an error message to the user
+        console.error('linkName is null');
+        return;
+      }
 
-    // Save click to database
-    await this.apollo.mutate({
-      mutation: SAVE_CLICK,
-      variables: {
-        click: clickInput,
-      },
-    }).toPromise();
+      // Create new ClickInput object
+      const clickInput: ClickInput = {
+        linkName: linkName,
+      }
 
+      // Save click to database
+      await firstValueFrom(
+        this.apollo.mutate({
+          mutation: SAVE_CLICK,
+          variables: {
+            click: clickInput,
+          },
+        })
+      )
+
+    } catch (error) {
+      // Error includes declaration of a non-null type, to be fixed in a future version.
+    }
   }
+
 }
