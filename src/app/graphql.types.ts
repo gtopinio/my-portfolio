@@ -34,7 +34,8 @@ type EmailInput = {
 }
 
 type ClickInput = {
-  linkName: String
+  linkName: String,
+  ipAddress: String
 }
 
 export { EmailInput, ClickInput }

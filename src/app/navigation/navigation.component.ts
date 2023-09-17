@@ -4,6 +4,7 @@ import {Apollo} from "apollo-angular";
 import { SAVE_CLICK } from "../graphql.operations";
 import { ClickInput } from "../graphql.types";
 import { firstValueFrom } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-navigation',
@@ -23,6 +24,7 @@ currentTab: string = '';
   ];
 
   constructor(private _navigationService: NavigationService,
+              private _http: HttpClient,
               private apollo: Apollo,
   ) {
 
@@ -56,20 +58,30 @@ currentTab: string = '';
         return;
       }
 
-      // Create new ClickInput object
-      const clickInput: ClickInput = {
-        linkName: linkName,
-      }
+      // Get IP address
+      const ipAddress = await firstValueFrom(
+        this._http.get('https://api.ipify.org?format=json')
+      ).then((res: any) => res.ip);
 
-      // Save click to database
-      await firstValueFrom(
-        this.apollo.mutate({
-          mutation: SAVE_CLICK,
-          variables: {
-            click: clickInput,
-          },
-        })
-      )
+      if (ipAddress !== null) {
+        // Create new ClickInput object
+        const clickInput: ClickInput = {
+          linkName: linkName,
+          ipAddress: ipAddress,
+        }
+
+        // Save click to database
+        await firstValueFrom(
+          this.apollo.mutate({
+            mutation: SAVE_CLICK,
+            variables: {
+              click: clickInput,
+            },
+          })
+        )
+      } else {
+        console.error('ipAddress is null');
+      }
 
     } catch (error) {
       // Error includes declaration of a non-null type, to be fixed in a future version.

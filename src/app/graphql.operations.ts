@@ -50,6 +50,7 @@ const SAVE_CLICK = gql`
   mutation saveClick($click: ClickInput!) {
     saveClick(click: $click) {
       linkName
+      ipAddress
     }
   }
 `;
