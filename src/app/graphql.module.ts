@@ -3,10 +3,30 @@ import { HttpLink } from 'apollo-angular/http';
 import { NgModule } from '@angular/core';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 
-const uri = 'https://myportfolio-spring-boot.onrender.com/graphql'; // <-- add the URL of the GraphQL server here
+import { onError } from "@apollo/client/link/error";
+import { ApolloLink } from "@apollo/client/core";
+
+const uris = [
+  'https://myportfolio-spring-boot.onrender.com/graphql',
+  'https://myportfolio-spring-boot-c2.onrender.com/graphiql'
+]; // <-- add the URLs of the GraphQL servers here
+
+let uriIndex = 0;
+
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+  const errorLink = onError(({ networkError }) => {
+    if (networkError) {
+      uriIndex = (uriIndex + 1) % uris.length; // switch to the next URI
+    }
+  });
+
+  const link = ApolloLink.from([
+    errorLink,
+    httpLink.create({ uri: uris[uriIndex] }),
+  ]);
+
   return {
-    link: httpLink.create({ uri }),
+    link,
     cache: new InMemoryCache(),
   };
 }
