@@ -16,6 +16,14 @@ export class ProjectService {
     }[] =
     [
       {
+        header: 'Omeglee',
+        subheader: 'Omegle-like Chat Web Application',
+        description: 'A web application that allows users to chat with random people. It is integrated with WebSockets for real-time communication.',
+        image: 'assets/images/project-omeglee.jpg',
+        link: 'https://omeglee.vercel.app/',
+        type: 'web-mobile-dev',
+      },
+      {
         header: 'ProgressPal - Web Application',
         subheader: 'Lite and Easy-to-use Task Management Solution',
         description: 'An Angular and Spring Boot web application that allows users to create, edit, and delete tasks. It also has a Kanban Board that allows users to move tasks from one column to another. It is integrated with Google Single Sign-On and has a user-friendly interface. Users can use the app even without signing in.',
