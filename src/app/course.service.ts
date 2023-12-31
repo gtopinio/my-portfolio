@@ -10,6 +10,17 @@ export class CourseService {
   getCourseList() {
     return [
       {
+        "id": "CS50",
+        "name": "Introduction to Computer Science",
+        "school": "Harvard University",
+        "year": "1st Semester 2023-2024",
+        "activities": [
+          "Learned about the fundamentals of computer science, including topics such as algorithms, data structures, and various programming languages.",
+          "Developed a range of projects, including a web application for a finance portfolio, a Python-based game of Hangman, and a C-based spell checker.",
+          "Revisited the basics of Python, C, and SQL, and learned about HTML, CSS, JavaScript, and Flask.",
+        ]
+      },
+      {
         "id": "CMSC 128",
         "name": "Introduction to Software Engineering",
         "school": "University of the Philippines Los Baños",
