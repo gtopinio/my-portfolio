@@ -8,7 +8,8 @@ import { ApolloLink } from "@apollo/client/core";
 
 const uris = [
   'https://myportfolio-spring-boot.onrender.com/graphql',
-  'https://myportfolio-spring-boot-c2.onrender.com/graphiql'
+  'https://myportfolio-spring-boot-c2.onrender.com/graphql',
+  'https://myportfolio-spring-boot-c2-bhsl.onrender.com/graphql'
 ]; // <-- add the URLs of the GraphQL servers here
 
 let uriIndex = 0;
