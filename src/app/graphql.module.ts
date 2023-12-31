@@ -6,9 +6,9 @@ import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { onError } from "@apollo/client/link/error";
 import { ApolloLink } from "@apollo/client/core";
 
-const uris = [
-  'https://myportfolio-spring-boot.onrender.com/graphql',
-  'https://myportfolio-spring-boot-c2.onrender.com/graphql',
+const uris = [ // Dynamic link switching doesn't work
+  // 'https://myportfolio-spring-boot.onrender.com/graphql',
+  // 'https://myportfolio-spring-boot-c2.onrender.com/graphql',
   'https://myportfolio-spring-boot-c2-bhsl.onrender.com/graphql'
 ]; // <-- add the URLs of the GraphQL servers here
 
