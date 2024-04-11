@@ -6,28 +6,32 @@ import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { onError } from "@apollo/client/link/error";
 import { ApolloLink } from "@apollo/client/core";
 
-const uris = [ // Dynamic link switching doesn't work
-  // 'https://myportfolio-spring-boot.onrender.com/graphql',
-  'https://myportfolio-spring-boot-c2.onrender.com/graphql',
-  // 'https://myportfolio-spring-boot-c2-bhsl.onrender.com/graphql'
-]; // <-- add the URLs of the GraphQL servers here
+const mainUri = 'https://myportfolio-spring-boot.onrender.com/graphql';
+const c2Uri = 'https://myportfolio-spring-boot-c2.onrender.com/graphql';
+const c2bhslUri = 'https://myportfolio-spring-boot-c2-bhsl.onrender.com/graphql';
 
-let uriIndex = 0;
+// const uris = [ // Dynamic link switching doesn't work
+//   // 'https://myportfolio-spring-boot.onrender.com/graphql',
+//   'https://myportfolio-spring-boot-c2.onrender.com/graphql',
+//   // 'https://myportfolio-spring-boot-c2-bhsl.onrender.com/graphql'
+// ]; // <-- add the URLs of the GraphQL servers here
+
+// let uriIndex = 0;
 
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  const errorLink = onError(({ networkError }) => {
-    if (networkError) {
-      uriIndex = (uriIndex + 1) % uris.length; // switch to the next URI
-    }
-  });
+  // const errorLink = onError(({ networkError }) => {
+  //   if (networkError) {
+  //     uriIndex = (uriIndex + 1) % uris.length; // switch to the next URI
+  //   }
+  // });
 
-  const link = ApolloLink.from([
-    errorLink,
-    httpLink.create({ uri: uris[uriIndex] }),
-  ]);
+  // const link = ApolloLink.from([
+  //   errorLink,
+  //   httpLink.create({ uri: uris[uriIndex] }),
+  // ]);
 
   return {
-    link,
+    link: httpLink.create({ uri: c2bhslUri }),
     cache: new InMemoryCache(),
   };
 }
