@@ -9,7 +9,7 @@ const envFile = `export const environment = {
     MY_PHONE_NUMBER: '${process.env.MY_PHONE_NUMBER}',
 };
 `;
-// Check custom ng build from vercel, must align with the path
+// Check custom 'ng build' from vercel, must align with the path
 const targetPath = path.join(__dirname, './environments/environment.development.ts');
 fs.writeFile(targetPath, envFile, (err) => {
   if (err) {
