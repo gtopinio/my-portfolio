@@ -4,7 +4,6 @@ import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { environment } from "../../environments/environment.development";
 
 
 @Component({
@@ -37,10 +36,8 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     if(isDevMode()){
       console.log('Development mode');
-      console.log('SMS Key: ', environment.HTTPS_SMS_KEY)
     } else {
       console.log('Production mode');
-      console.log('SMS Key: ', environment.HTTPS_SMS_KEY)
     }
   }
 
