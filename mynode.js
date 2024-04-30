@@ -17,14 +17,5 @@ fs.writeFile(targetPath, envFile, (err) => {
     throw err;
   } else {
     console.log(successColor, `${checkSign} Successfully generated environment.development.ts`);
-    // Show the content of the file
-    fs.readFile (targetPath, 'utf8', (err, data) => {
-      if (err) {
-        console.error(err);
-        throw err;
-      } else {
-        console.log(data);
-      }
-    });
   }
 });
