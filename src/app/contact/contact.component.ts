@@ -5,6 +5,7 @@ import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { environment } from "../../environments/environment.development";
+import { HttpClient } from "@angular/common/http";
 
 
 @Component({
@@ -17,12 +18,13 @@ export class ContactComponent implements OnInit {
 
   contactForm:FormGroup;
   loading = false;
-  MessageMinLength = 20;
+  MessageMinLength = 5;
 
   constructor(private formBuilder:FormBuilder,
               private apollo: Apollo,
               private confirmationService: ConfirmationService,
-              private messageService: MessageService
+              private messageService: MessageService,
+              private http: HttpClient
 
   ){
     this.contactForm = this.formBuilder.group(
@@ -59,65 +61,49 @@ export class ContactComponent implements OnInit {
     }
   }
 
-async acceptSendMessage() {
-  const isSent = await this.onSubmit();
-  if (isSent) {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Success: Message sent successfully',
-      detail: 'Please wait for a response'
-    });
-  } else {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Error: Message not sent',
-      detail: 'Either the form is invalid or the message is too short'
-    });
-  }
-}
-
   rejectSendMessage(){
     this.messageService.add({severity:'info', summary: 'Info', detail: 'Message not sent'});
   }
 
+  async acceptSendMessage() {
+    try {
+      const isSent = await this.onSubmit();
+      if (isSent) {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success: Message sent successfully',
+          detail: 'Please wait for a response'
+        });
+      } else {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error: Message not sent',
+          detail: 'Either the form is invalid or the message is too short'
+        });
+      }
+    } catch (error) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error: Message not sent',
+        detail: 'An error occurred while sending the message'
+      });
+    }
+    this.loading = false;
+  }
 
   async onSubmit(): Promise<boolean> {
-    let isSent = false;
-
+    this.loading = true;
     if (this.contactForm.valid) {
-      this.loading = true;
       const { name, email, message } = this.contactForm.value;
-
-      if (name === null || email === null || message === null) {
-        console.log('Form is invalid');
-        this.loading = false;
-        return isSent;
+      if (name && email && message && message.trim().length >= this.MessageMinLength) {
+        return await this.sendSms(name, email, message);
       }
-
-      // If the message has characters but only whitespace, then it is invalid
-      if (message.trim().length === 0) {
-        console.log('Message is only whitespace');
-        this.loading = false;
-        return isSent;
-      }
-
-      if (message.length < this.MessageMinLength) {
-        console.log('Message is too short');
-        this.loading = false;
-        return isSent;
-      }
-
-      // isSent = await this.sendEmail(name, email, message);
-    } else {
-      console.log('Form is invalid');
-      this.loading = false;
     }
-
-    return isSent;
+    this.loading = false;
+    return false;
   }
 
   async sendEmail(name: string, email: string, message: string) : Promise<boolean> {
-    // Create new EmailInput object
     const emailInput: EmailInput = {
       senderName: name,
       senderEmail: email,
@@ -125,53 +111,45 @@ async acceptSendMessage() {
     };
 
     try {
-      await this.apollo
-        .mutate({
-          mutation: SAVE_EMAIL,
-          variables: {
-            email: emailInput,
-          },
-        })
-        .toPromise();
-      console.log('Successfully sent the message');
+      await this.apollo.mutate({
+        mutation: SAVE_EMAIL,
+        variables: {
+          email: emailInput,
+        },
+      }).toPromise();
       this.loading = false;
       this.contactForm.reset();
       return true;
     } catch (error) {
-      console.log('Error sending the email: ', error);
       this.loading = false;
-      return false;
+      throw error;
     }
   }
 
   async sendSms(name: string, email: string, message: string) : Promise<boolean> {
-    let isSent = false;
     message = '' +
       'My Portfolio Notification: \n\n' +
       'Name: ' + name + '\nEmail: ' + email + '\nMessage: '
       + message + '\n\nThis is an automated message. Do not reply.';
 
-    fetch('https://api.httpsms.com/v1/messages/send', {
-      method: 'POST',
-      headers: {
-        'x-api-key': environment.HTTP_SMS_KEY,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    try {
+      const response = await this.http.post('https://api.httpsms.com/v1/messages/send', {
         "content": message,
         "from": environment.MY_PHONE_NUMBER,
         "to": environment.MY_PHONE_NUMBER,
-      })
-    })
-      .then(res => {
-        console.log("SMS request complete! response:", res);
-      })
-      .then((data) => {
-        console.log("SMS data:", data);
-        isSent = true;
-      });
-    return isSent;
+      }, {
+        headers: {
+          'x-api-key': environment.HTTP_SMS_KEY,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).toPromise();
+
+      console.log("Response: ", response);
+      return true;
+    } catch (error) {
+      throw error;
+    }
   }
 
 }
