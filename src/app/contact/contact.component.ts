@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { HttpSmsService } from "../http-sms.service";
 
 
 @Component({
@@ -22,8 +21,7 @@ export class ContactComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
               private apollo: Apollo,
               private confirmationService: ConfirmationService,
-              private messageService: MessageService,
-              private httpSmsService: HttpSmsService,
+              private messageService: MessageService
 
   ){
     this.contactForm = this.formBuilder.group(
@@ -36,6 +34,7 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   async onConfirm(){
@@ -108,42 +107,36 @@ async acceptSendMessage() {
         return isSent;
       }
 
-      // isSent = await this.sendEmail(name, email, message);
-      isSent = await this.httpSmsService.sendSms(name, email, message);
+      // Create new EmailInput object
+      const emailInput: EmailInput = {
+        senderName: name,
+        senderEmail: email,
+        message: message,
+      };
+
+      try {
+        await this.apollo
+          .mutate({
+            mutation: SAVE_EMAIL,
+            variables: {
+              email: emailInput,
+            },
+          })
+          .toPromise();
+        console.log('Successfully sent the message');
+        this.loading = false;
+        this.contactForm.reset();
+        isSent = true;
+      } catch (error) {
+        console.log('Error sending the email: ', error);
+        this.loading = false;
+      }
     } else {
       console.log('Form is invalid');
       this.loading = false;
     }
 
     return isSent;
-  }
-
-  async sendEmail(name: string, email: string, message: string) : Promise<boolean> {
-    // Create new EmailInput object
-    const emailInput: EmailInput = {
-      senderName: name,
-      senderEmail: email,
-      message: message,
-    };
-
-    try {
-      await this.apollo
-        .mutate({
-          mutation: SAVE_EMAIL,
-          variables: {
-            email: emailInput,
-          },
-        })
-        .toPromise();
-      console.log('Successfully sent the message');
-      this.loading = false;
-      this.contactForm.reset();
-      return true;
-    } catch (error) {
-      console.log('Error sending the email: ', error);
-      this.loading = false;
-      return false;
-    }
   }
 
 }
