@@ -6,8 +6,10 @@ const dotenv = require('dotenv').config({path: 'src/.env'});
 
 const envFile = `export const environment = {
     HTTPS_SMS_KEY: '${process.env.HTTPS_SMS_KEY}',
+    MY_PHONE_NUMBER: '${process.env.MY_PHONE_NUMBER}',
 };
 `;
+// Check custom ng build from vercel, must align with the path
 const targetPath = path.join(__dirname, './environments/environment.development.ts');
 fs.writeFile(targetPath, envFile, (err) => {
   if (err) {

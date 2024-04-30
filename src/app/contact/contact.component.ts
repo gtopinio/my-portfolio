@@ -4,6 +4,7 @@ import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
+import { HttpSmsService } from "../http-sms.service";
 
 
 @Component({
@@ -21,7 +22,8 @@ export class ContactComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
               private apollo: Apollo,
               private confirmationService: ConfirmationService,
-              private messageService: MessageService
+              private messageService: MessageService,
+              private httpSmsService: HttpSmsService,
 
   ){
     this.contactForm = this.formBuilder.group(
@@ -107,6 +109,7 @@ async acceptSendMessage() {
       }
 
       // isSent = await this.sendEmail(name, email, message);
+      isSent = await this.httpSmsService.sendSms(name, email, message);
     } else {
       console.log('Form is invalid');
       this.loading = false;
