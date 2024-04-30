@@ -8,7 +8,7 @@ const envFile = `export const environment = {
     HTTPS_SMS_KEY: '${process.env.HTTPS_SMS_KEY}',
 };
 `;
-const targetPath = path.join(__dirname, './src/environments/environment.development.ts');
+const targetPath = path.join(__dirname, './environments/environment.development.ts');
 fs.writeFile(targetPath, envFile, (err) => {
   if (err) {
     console.error(err);
