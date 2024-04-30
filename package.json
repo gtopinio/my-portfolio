@@ -26,6 +26,7 @@
     "dotenv": "^16.4.5",
     "graphql": "^16.7.1",
     "graphql-tag": "^2.12.6",
+    "httpsms": "^0.0.4",
     "primeicons": "^6.0.1",
     "primeng": "^15.4.1",
     "rxjs": "~7.8.0",
