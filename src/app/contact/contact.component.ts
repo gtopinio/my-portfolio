@@ -4,7 +4,7 @@ import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { HttpSmsService } from "../http-sms.service";
+import { environment } from "../../environments/environment.development";
 
 
 @Component({
@@ -22,8 +22,7 @@ export class ContactComponent implements OnInit {
   constructor(private formBuilder:FormBuilder,
               private apollo: Apollo,
               private confirmationService: ConfirmationService,
-              private messageService: MessageService,
-              private httpSmsService: HttpSmsService,
+              private messageService: MessageService
 
   ){
     this.contactForm = this.formBuilder.group(
@@ -109,7 +108,6 @@ async acceptSendMessage() {
       }
 
       // isSent = await this.sendEmail(name, email, message);
-      isSent = await this.httpSmsService.sendSms(name, email, message);
     } else {
       console.log('Form is invalid');
       this.loading = false;
@@ -144,6 +142,36 @@ async acceptSendMessage() {
       this.loading = false;
       return false;
     }
+  }
+
+  async sendSms(name: string, email: string, message: string) : Promise<boolean> {
+    let isSent = false;
+    message = '' +
+      'My Portfolio Notification: \n\n' +
+      'Name: ' + name + '\nEmail: ' + email + '\nMessage: '
+      + message + '\n\nThis is an automated message. Do not reply.';
+
+    fetch('https://api.httpsms.com/v1/messages/send', {
+      method: 'POST',
+      headers: {
+        'x-api-key': environment.HTTP_SMS_KEY,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "content": message,
+        "from": environment.MY_PHONE_NUMBER,
+        "to": environment.MY_PHONE_NUMBER,
+      })
+    })
+      .then(res => {
+        console.log("SMS request complete! response:", res);
+      })
+      .then((data) => {
+        console.log("SMS data:", data);
+        isSent = true;
+      });
+    return isSent;
   }
 
 }
