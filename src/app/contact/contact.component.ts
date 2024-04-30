@@ -36,7 +36,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    console.log(environment.HTTPS_SMS_KEY);
+    console.log('Test Key Output: ', environment.HTTPS_SMS_KEY);
   }
 
   async onConfirm(){
