@@ -100,6 +100,7 @@ export class ContactComponent implements OnInit {
       }
     }
     this.loading = false;
+    this.contactForm.reset();
     return false;
   }
 
