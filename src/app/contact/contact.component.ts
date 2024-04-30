@@ -4,7 +4,6 @@ import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { environment } from "../../environments/environment.development";
 
 
 @Component({
@@ -35,7 +34,6 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Test Key Output: ', environment.HTTPS_SMS_KEY);
   }
 
   async onConfirm(){
