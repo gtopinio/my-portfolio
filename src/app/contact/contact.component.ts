@@ -1,10 +1,10 @@
-import { Component, OnInit, isDevMode } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Apollo, gql } from "apollo-angular";
 import { EmailInput } from "../graphql.types";
 import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
-import { environment } from "../../environments/environment.development";
+import { environment } from "../../environments/environment";
 
 
 @Component({
@@ -35,13 +35,8 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(isDevMode()){
-      console.log('Development mode');
-      console.log(environment.HTTPS_SMS_KEY);
-    } else {
-      console.log('Production mode');
-      console.log(environment.HTTPS_SMS_KEY);
-    }
+    // @ts-ignore
+    console.log(environment.HTTPS_SMS_KEY);
   }
 
   async onConfirm(){
