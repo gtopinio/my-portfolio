@@ -16,7 +16,7 @@ module.exports = {
         body: ['Poppins'],
       },
       screens: {
-        'lx': '1250px',
+        'lx': '1290px',
         'nav-limit': '880px',
       },
       width: {
