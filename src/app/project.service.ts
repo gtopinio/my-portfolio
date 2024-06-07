@@ -16,6 +16,14 @@ export class ProjectService {
     }[] =
     [
       {
+        header: 'OSES Connect',
+        subheader: 'Centralized Attendance Management System',
+        description: 'A cost-effective web-based system that streamlines attendance management at Ortiz-Saranay Elementary School by digitizing the process with QR codes and a Markov Chain model for absenteeism prediction. It enhances parental monitoring through SMS notifications and improves data management with comprehensive report generation.',
+        image: 'assets/images/project-oses-connect.png',
+        link: 'https://oses-connect.vercel.app/',
+        type: 'web-mobile-dev',
+      },
+      {
         header: 'Omeglee',
         subheader: 'Omegle-like Chat Web Application',
         description: 'A web application that allows users to chat with random people. It is integrated with WebSockets for real-time communication.',
