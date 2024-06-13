@@ -16,6 +16,14 @@ export class ProjectService {
     }[] =
     [
       {
+        header: 'Aora',
+        subheader: 'A Hub for AI-Generated Video Sharing',
+        description: 'A React Native mobile application that allows users to create, share, and watch AI-generated videos. It is integrated with AppWrite for user authentication and video storage. It also uses the NativeWind and Animatable libraries for a smooth and responsive user interface.',
+        image: 'assets/images/project-aora.png',
+        link: 'https://github.com/gtopinio/react-native-aora',
+        type: 'web-mobile-dev',
+      },
+      {
         header: 'OSES Connect',
         subheader: 'Centralized Attendance Management System',
         description: 'A cost-effective web-based system that streamlines attendance management at Ortiz-Saranay Elementary School by digitizing the process with QR codes and a Markov Chain model for absenteeism prediction. It enhances parental monitoring through SMS notifications and improves data management with comprehensive report generation.',
