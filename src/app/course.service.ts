@@ -21,6 +21,16 @@ export class CourseService {
         ]
       },
       {
+        "id": "CMSC 165",
+        "name": "Digital Image Processing",
+        "school": "University of the Philippines Los Baños",
+        "year": "1st Semester 2023-2024",
+        "activities": [
+          "Learned about the methods for acquiring, creating, manipulating, enhancing, and analyzing digital images.",
+          "Developed a simple Python program to detect jeepneys in a live video feed using OpenCV and CUDA while providing real-time notifications to the user.",
+        ]
+      },
+      {
         "id": "CMSC 128",
         "name": "Introduction to Software Engineering",
         "school": "University of the Philippines Los Baños",
