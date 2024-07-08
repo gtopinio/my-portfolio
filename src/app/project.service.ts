@@ -16,6 +16,14 @@ export class ProjectService {
     }[] =
     [
       {
+        header: 'Custom KeyCloak Server',
+        subheader: 'Secure Identity and Access Management',
+        description: 'A cost-effective, open-source identity and access management solution, deployed using Docker and Google Cloud Platform at no cost.',
+        image: 'assets/images/project-keycloak.png',
+        link: '',
+        type: 'others',
+      },
+      {
         header: 'Aora',
         subheader: 'A Hub for AI-Generated Video Sharing',
         description: 'A React Native mobile application that allows users to create, share, and watch AI-generated videos. It is integrated with AppWrite for user authentication and video storage. It also uses the NativeWind and Animatable libraries for a smooth and responsive user interface.',
