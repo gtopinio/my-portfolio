@@ -20,7 +20,7 @@ export class ProjectService {
         subheader: 'Secure Identity and Access Management',
         description: 'A cost-effective, open-source identity and access management solution, deployed using Docker and Google Cloud Platform at no cost.',
         image: 'assets/images/project-keycloak.png',
-        link: '',
+        link: 'https://auth.genesis.pbxrus.com',
         type: 'others',
       },
       {
