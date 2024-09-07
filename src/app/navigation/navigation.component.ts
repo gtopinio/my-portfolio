@@ -5,6 +5,7 @@ import { SAVE_CLICK } from "../graphql.operations";
 import { ClickInput } from "../graphql.types";
 import { firstValueFrom } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { GoogleAnalyticsService } from "ngx-google-analytics";
 
 @Component({
   selector: 'app-navigation',
@@ -23,9 +24,11 @@ currentTab: string = '';
     {id: 'contact', name: 'Contact'},
   ];
 
-  constructor(private _navigationService: NavigationService,
-              private _http: HttpClient,
-              private apollo: Apollo,
+  constructor(
+    private _navigationService: NavigationService,
+    private _http: HttpClient,
+    private apollo: Apollo,
+    private $gaService: GoogleAnalyticsService
   ) {
 
   }
@@ -44,8 +47,13 @@ currentTab: string = '';
 
   async changeTab(tab: string): Promise<void> {
     this.currentTab = tab;
-    await this.onClickLink(tab);
+    this.onGALinkClick(tab);
+    // await this.onClickLink(tab);
 
+  }
+
+  onGALinkClick(linkName: string): void {
+    this.$gaService.event('click', 'link', linkName);
   }
 
   async onClickLink(linkName: string): Promise<void> {

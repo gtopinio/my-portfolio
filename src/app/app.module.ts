@@ -27,6 +27,7 @@ import { ToastModule } from "primeng/toast";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ConfirmationService } from "primeng/api";
 import { MessageService } from "primeng/api";
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MessageService } from "primeng/api";
     GraphQLModule,
     ToastModule,
     ConfirmDialogModule,
+    NgxGoogleAnalyticsModule.forRoot('G-1HJC00NCSZ'),
   ],
   providers: [
     CourseService,
