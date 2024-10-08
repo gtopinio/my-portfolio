@@ -15,20 +15,27 @@
 
       <div class="flex flex-col">
         <div class="ml-5 nav-limit:flex nav-limit:flex-row nav-limit:justify-between"> <!-- Name and Email Input Container -->
-          <div>
+          <div class="flex-1">
             <span class="p-float-label">
-              <input type="text" id="float-input-name" pInputText formControlName="name" class="contact-form-input mr-10"/>
-              <label for="float-input-name" class="area-float">Full Name</label>
+              <input type="text" id="float-input-name" pInputText formControlName="first_name" class="contact-form-input"/>
+              <label for="float-input-name" class="area-float">First Name</label>
             </span>
           </div>
 
-          <div class="max-nav-limit:mt-7">
+          <div class="flex-1 max-nav-limit:mt-7">
             <span class="p-float-label">
-              <input type="text" id="float-input-email" pInputText formControlName="email" class="contact-form-input mr-10"/>
-              <label for="float-input-email" class="area-float">Email Address</label>
+              <input type="text" id="float-input-last-name" pInputText formControlName="last_name" class="contact-form-input"/>
+              <label for="float-input-last-name" class="area-float">Last Name</label>
             </span>
           </div>
         </div> <!-- End of Name and Email Input Container -->
+
+        <div class="ml-5 mt-7"> <!-- Email Input Container -->
+          <span class="p-float-label">
+            <input type="text" id="float-input-email" pInputText formControlName="email" class="contact-form-input"/>
+            <label for="float-input-email" class="area-float">Email Address</label>
+          </span>
+        </div> <!-- End of Email Input Container -->
 
         <div class="mt-8 ml-5">
           <span class="p-float-label">

@@ -6,6 +6,7 @@ import { SAVE_EMAIL } from "../graphql.operations";
 import { ConfirmationService, MessageService } from "primeng/api";
 import { environment } from "../../environments/environment.development";
 import { HttpClient } from "@angular/common/http";
+import { EmailService } from "../email.service";
 
 
 @Component({
@@ -24,12 +25,14 @@ export class ContactComponent implements OnInit {
               private apollo: Apollo,
               private confirmationService: ConfirmationService,
               private messageService: MessageService,
-              private http: HttpClient
+              private http: HttpClient,
+              private _emailService: EmailService
 
   ){
     this.contactForm = this.formBuilder.group(
       {
-        name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        first_name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+        last_name: new FormControl('', [Validators.required, Validators.minLength(2)]),
         email: new FormControl('', [Validators.required, Validators.email]),
         message: new FormControl('', Validators.required),
       }
@@ -66,6 +69,7 @@ export class ContactComponent implements OnInit {
   }
 
   async acceptSendMessage() {
+    this.loading = true;
     try {
       const isSent = await this.onSubmit();
       if (isSent) {
@@ -78,7 +82,7 @@ export class ContactComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error: Message not sent',
-          detail: 'Either the form is invalid or the message is too short'
+          detail: 'An error occurred while sending the message'
         });
       }
     } catch (error) {
@@ -87,44 +91,59 @@ export class ContactComponent implements OnInit {
         summary: 'Error: Message not sent',
         detail: 'An error occurred while sending the message'
       });
+    } finally {
+      this.loading = false;
     }
-    this.loading = false;
   }
 
   async onSubmit(): Promise<boolean> {
-    this.loading = true;
     if (this.contactForm.valid) {
-      const { name, email, message } = this.contactForm.value;
-      if (name && email && message && message.trim().length >= this.MessageMinLength) {
-        return await this.sendSms(name, email, message);
-      }
+      const { first_name, last_name, email, message } = this.contactForm.value;
+      // SEND-SMS No longer supported
+      // return await this.sendSms(name, email, message);
+      return await this.sendEmail(first_name, last_name, email, message);
     }
-    this.loading = false;
-    this.contactForm.reset();
     return false;
   }
 
-  async sendEmail(name: string, email: string, message: string) : Promise<boolean> {
-    const emailInput: EmailInput = {
-      senderName: name,
-      senderEmail: email,
-      message: message,
-    };
+  async sendEmail(first_name: string, last_name : string, email: string, message: string) : Promise<boolean> {
+    // OLD IMPLEMENTATION
+    // const emailInput: EmailInput = {
+    //   senderName: name,
+    //   senderEmail: email,
+    //   message: message,
+    // };
+    //
+    // try {
+    //   await this.apollo.mutate({
+    //     mutation: SAVE_EMAIL,
+    //     variables: {
+    //       email: emailInput,
+    //     },
+    //   }).toPromise();
+    //   this.loading = false;
+    //   this.contactForm.reset();
+    //   return true;
+    // } catch (error) {
+    //   this.loading = false;
+    //   throw error;
+    // }
 
-    try {
-      await this.apollo.mutate({
-        mutation: SAVE_EMAIL,
-        variables: {
-          email: emailInput,
+    const emailDTO = this._emailService.buildEmailDTO(email, 'My Portfolio Notification', message, first_name, last_name);
+    return new Promise((resolve) => {
+      this._emailService.sendEmail(emailDTO).subscribe({
+        next: (response: any) => {
+          console.log("Response: ", response);
+          this.contactForm.reset();
+          resolve(true);
         },
-      }).toPromise();
-      this.loading = false;
-      this.contactForm.reset();
-      return true;
-    } catch (error) {
-      this.loading = false;
-      throw error;
-    }
+        error: (error) => {
+          console.error("Error sending email: ", error);
+          resolve(false);
+        }
+      });
+    });
+
   }
 
   async sendSms(name: string, email: string, message: string) : Promise<boolean> {
