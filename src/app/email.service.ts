@@ -14,6 +14,7 @@ interface EmailDTO {
   providedIn: 'root'
 })
 export class EmailService {
+  private localApiUrl = 'http://localhost:8080/api';
   private apiUrlMain = 'https://stompaas.onrender.com/api';
   private apiUrlC2 = 'https://stompaas-c2.onrender.com/api';
   private apiUrlC3 = 'https://stompaas-c3.onrender.com/api';
@@ -24,7 +25,7 @@ export class EmailService {
   ) { }
 
   get getCurrentApiUrl(): string {
-    return this.apiUrlMain;
+    return this.localApiUrl;
   }
 
   buildEmailDTO(
