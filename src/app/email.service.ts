@@ -25,7 +25,7 @@ export class EmailService {
   ) { }
 
   get getCurrentApiUrl(): string {
-    return this.localApiUrl;
+    return this.apiUrlMain;
   }
 
   buildEmailDTO(
