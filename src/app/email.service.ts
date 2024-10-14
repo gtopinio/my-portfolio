@@ -14,12 +14,18 @@ interface EmailDTO {
   providedIn: 'root'
 })
 export class EmailService {
-  private apiUrl = 'https://stompaas-c2.onrender.com/api';
+  private apiUrlMain = 'https://stompaas.onrender.com/api';
+  private apiUrlC2 = 'https://stompaas-c2.onrender.com/api';
+  private apiUrlC3 = 'https://stompaas-c3.onrender.com/api';
   private sendEmailPath = '/send-email';
 
   constructor(
     private _httpClient: HttpClient
   ) { }
+
+  get getCurrentApiUrl(): string {
+    return this.apiUrlMain;
+  }
 
   buildEmailDTO(
     senderEmail: string,
@@ -38,6 +44,6 @@ export class EmailService {
   }
 
   sendEmail(emailDTO: EmailDTO): Observable<any> {
-    return this._httpClient.post(`${this.apiUrl}${this.sendEmailPath}`, emailDTO, {responseType: 'text'}); // responseType: 'text' is required for the response to be parsed as text since the response is not a JSON object
+    return this._httpClient.post(`${this.getCurrentApiUrl}${this.sendEmailPath}`, emailDTO, {responseType: 'text'}); // responseType: 'text' is required for the response to be parsed as text since the response is not a JSON object
   }
 }
